@@ -13,6 +13,15 @@ const NavbarAdmin = () => {
             <NavLink to="/admin">ADMIN Home</NavLink>
           </li>
           <li>
+            <NavLink to="/admin/createreview">Create Review</NavLink>
+          </li>
+          <li>
+            <NavLink to="/admin/editreview">Edit Review</NavLink>
+          </li>
+          <li>
+            <NavLink to="/admin/deletereview">Delete Review</NavLink>
+          </li>
+          <li>
             <LogoutButton />
           </li>
         </menu>

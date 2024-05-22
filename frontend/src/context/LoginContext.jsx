@@ -24,7 +24,7 @@ const LoginContextProvider = (probs) => {
     const fd = new FormData();
     fd.append("identity", identity);
     fd.append("password", password);
-    makeRequest("http://localhost:8082/api/collections/users/auth-with-password", "POST", null, fd, 8082);
+    makeRequest("http://localhost:8082/api/collections/users/auth-with-password", "POST", null, fd);
   };
   const signOut = () => {
     setUser();

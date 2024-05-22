@@ -15,16 +15,16 @@ const Navbar = () => {
       <div className="flex-none">
         <menu className="z-10 px-1 menu menu-horizontal">
           <li>
-            <NavLink to="energidata">Energidata</NavLink>
-          </li>
-          <li>
-            <NavLink to="hyheder">Nyheder</NavLink>
+            <NavLink to="viborghaveservice/aboutus">ViborgHaveservice aboutus</NavLink>
           </li>
           <li>
             <NavLink to="vejret">Vejret</NavLink>
           </li>
           <li>
-            <NavLink to="viborghaveservice/aboutus">ViborgHaveservice aboutus</NavLink>
+            <NavLink to="nyheder">Nyheder</NavLink>
+          </li>
+          <li>
+            <NavLink to="energipriser">Energipriser</NavLink>
           </li>
           {!user ? (
             <li>

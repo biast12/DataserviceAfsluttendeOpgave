@@ -7,7 +7,7 @@ import Layout from "./layout";
 import ErrorPages from "./pages/ErrorPages";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Energidata from "./pages/Energidata";
+import Energipriser from "./pages/Energipriser";
 import Nyheder from "./pages/Nyheder";
 import Vejret from "./pages/Vejret";
 import AboutUs from "./pages/ViborgHaveservice/AboutUs";
@@ -16,6 +16,9 @@ import Services from "./pages/ViborgHaveservice/Services";
 // Admin Pages
 import AdminLayout from "./layout/admin";
 import HomeAdmin from "./pages/admin/HomeAdmin";
+import CreateReview from "./pages/admin/CreateReview";
+import EditReview from "./pages/admin/EditReview";
+import DeleteReview from "./pages/admin/DeleteReview";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,8 +29,8 @@ function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: "login", element: <Login /> },
-        { path: "energidata", element: <Energidata /> },
-        { path: "hyheder", element: <Nyheder /> },
+        { path: "energipriser", element: <Energipriser /> },
+        { path: "nyheder", element: <Nyheder /> },
         { path: "vejret", element: <Vejret /> },
         { path: "viborghaveservice/aboutus", element: <AboutUs /> },
         { path: "viborghaveservice/services", element: <Services /> },
@@ -37,7 +40,12 @@ function App() {
       // Admin routing
       element: <AdminLayout />,
       errorElement: <ErrorPages />,
-      children: [{ path: "admin", element: <HomeAdmin /> }],
+      children: [
+        { path: "admin", element: <HomeAdmin /> },
+        { path: "admin/createreview", element: <CreateReview /> },
+        { path: "admin/editreview", element: <EditReview /> },
+        { path: "admin/deletereview", element: <DeleteReview /> },
+      ],
     },
     { path: "*", element: <ErrorPages statusCode={404} /> },
   ]);
