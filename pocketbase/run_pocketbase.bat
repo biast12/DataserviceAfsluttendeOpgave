@@ -1,0 +1,1 @@
+pocketbase.exe serve --http=localhost:8082
