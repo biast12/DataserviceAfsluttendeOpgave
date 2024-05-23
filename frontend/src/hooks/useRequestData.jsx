@@ -3,35 +3,16 @@ import axios from "axios";
 import ErrorPages from "../pages/ErrorPages";
 
 function useRequestData() {
-  // Håntere om vi venter på data = loader
   const [isLoading, setIsLoading] = useState(false);
-
-  // Når der er data fra et API inlæses de i staten her
   const [data, setData] = useState(null);
-
-  // Hvis der opstår fejl sætter vi denne til true
   const [error, setError] = useState(false);
 
-  // Ring API'et op - hent data!
-  const makeRequest = async (
-    url,
-    method = "GET",
-    headers = null,
-    data = null,
-  ) => {
-    let response; // til data mv. fra api'et
+  const makeRequest = async (url, method = "GET", headers = null, data = null) => {
+    let response;
     setIsLoading(true);
 
     // Check if method is valid
-    const validMethods = [
-      "GET",
-      "POST",
-      "PUT",
-      "DELETE",
-      "PATCH",
-      "OPTIONS",
-      "HEAD",
-    ];
+    const validMethods = ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"];
     if (!validMethods.includes(method.toUpperCase())) {
       console.error(`Invalid method: ${method}`);
       setError(true);

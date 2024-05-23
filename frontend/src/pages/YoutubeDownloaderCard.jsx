@@ -8,7 +8,7 @@ const YoutubeDownloaderCard = ({ data }) => {
   data.videos.items.forEach((item, index) => {
     if (item.hasAudio) {
       indicesWithAudio.push(index);
-      let quality = parseInt(item.quality); // or parseFloat(item.quality) if it's a floating-point number
+      let quality = parseInt(item.quality);
       if (quality > highestQuality) {
         highestQuality = quality;
         highestQualityIndex = index;
@@ -35,26 +35,21 @@ const YoutubeDownloaderCard = ({ data }) => {
   }
   return (
     <>
-      <h2 className="text-2xl">{data.title}</h2>
-      <video
-        src={data.videos.items[highestQualityIndex].url}
-        width={data.videos.items[highestQualityIndex].width}
-        height={data.videos.items[highestQualityIndex].height}
-        controls="controls"
-        poster={data.thumbnails[data.channel.avatar.length - 1].url}
-      />
-      <p>Length: {msToTime(data.videos.items[highestQualityIndex].lengthMs)}</p>
-      <p>Description: {data.description}</p>
-      <p>
-        <a href={`https://www.youtube.com/channel/${data.channel.id}`}>
-          Channel: {data.channel.name}
-        </a>
+      <a href={"https://www.youtube.com/watch?v=" + data.id} target="_blank" className="w-full text-center">
+        <h2 className="text-4xl m-5">{data.title}</h2>
+      </a>
+      <video className="w-full" src={data.videos.items[highestQualityIndex].url} controls="controls" poster={data.thumbnails[data.channel.avatar.length - 1].url} />
+      <p className="m-1">Length: {msToTime(data.videos.items[highestQualityIndex].lengthMs)}</p>
+      <p className="m-1">
+        <a href={`https://www.youtube.com/channel/${data.channel.id}`}>Channel: {data.channel.name}</a>
         <figure>
-          <img
-            src={data.channel.avatar[data.channel.avatar.length - 1].url}
-            alt={data.title}
-          ></img>
+          <img src={data.channel.avatar[data.channel.avatar.length - 1].url} alt={data.title}></img>
         </figure>
+      </p>
+      <p className="m-1">
+        Description:
+        <br />
+        {data.description}
       </p>
     </>
   );

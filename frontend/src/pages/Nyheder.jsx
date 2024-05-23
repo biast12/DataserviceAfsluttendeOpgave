@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import NyhederCard from "./NyhederCard";
 import Title from "../components/Title";
 import Loader from "../components/Loader";
 import Error from "../pages/ErrorPages";
+import Head from "../components/Head";
 import useRequestData from "../hooks/useRequestData";
+import NyhederCard from "./NyhederCard";
 
 const Nyheder = () => {
   const { makeRequest, isLoading, data, error } = useRequestData();
@@ -44,22 +45,27 @@ const Nyheder = () => {
   }, [language, sorting, currentPage, pageSize]);
 
   const handleSearch = () => {
-    let url = `https://newsapi.org/v2/everything?language=${language}&q=${searchKey}&sortBy=${sorting}&apiKey=${
-      import.meta.env.VITE_APP_NEWSAPIKEY
-    }&page=${currentPage}&pageSize=${pageSize}`;
+    let url = `https://newsapi.org/v2/everything?language=${language}&q=${searchKey}&sortBy=${sorting}&apiKey=${import.meta.env.VITE_APP_NEWSAPIKEY}&page=${currentPage}&pageSize=${pageSize}`;
 
     makeRequest(url);
   };
 
   return (
     <div className="flex flex-col items-center">
+      <Head title="Nyheder" description="..." />
       {error && <Error statusCode={error} />}
       {isLoading && <Loader />}
 
-      <Title titleText="Posts fra NewsAPI"></Title>
+      <Title titleText="Posts From NewsAPI"></Title>
 
       {/* Søg */}
-      <div className="flex justify-center">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSearch();
+        }}
+        className="flex justify-center"
+      >
         <input
           className="m-2 input input-bordered"
           type="text"
@@ -70,10 +76,12 @@ const Nyheder = () => {
             setSearchKey(e.target.value);
           }}
         />
-        <button disabled={!searchKey} onClick={() => handleSearch()}>SØG</button>
-      </div>
+        <button type="submit" disabled={!searchKey} className="my-2 w-20 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 hover:cursor-pointer">
+          SØG
+        </button>
+      </form>
 
-      <div>
+      <div className="mb-2">
         {/* Pick sprog */}
         <select
           onChange={(e) => {
@@ -95,7 +103,7 @@ const Nyheder = () => {
           }}
           required
           defaultValue={sorting}
-          className="max-w-xs select select-bordered"
+          className="ms-2 max-w-xs select select-bordered"
         >
           {sortings.map((lang, index) => (
             <option key={index} value={lang.code}>
@@ -105,36 +113,14 @@ const Nyheder = () => {
         </select>
       </div>
 
-      <div className="flex flex-wrap justify-center">
-        {data &&
-          data.articles
-            .filter(
-              (n) => n.title !== "[Removed]"
-              /*.
-                p.name.includes(Search) ||
-                p.model.includes(Search) ||
-                p.manufacturer.includes(Search) ||
-                p.length.includes(Search) ||
-                p.max_atmosphering_speed.includes(Search)
-                */
-            )
-            .map((n, i) => <NyhederCard post={n} key={i} />)}
-      </div>
+      <div className="flex flex-wrap justify-center">{data && data.articles.filter((n) => n.title !== "[Removed]" && n.description !== null && n.title !== null).map((n, i) => <NyhederCard post={n} key={i} />)}</div>
       <div>
         {data && (
           <>
-            <button
-              onClick={() => setCurrentPage(currentPage - 1)}
-              className="m-2 selected-none btn btn-error"
-              disabled={currentPage <= 1}
-            >
+            <button onClick={() => setCurrentPage(currentPage - 1)} className="m-2 selected-none btn btn-error" disabled={currentPage <= 1}>
               Previous
             </button>
-            <button
-              onClick={() => setCurrentPage(currentPage + 1)}
-              className="m-2 btn btn-success"
-              disabled={currentPage >= data?.length - pageSize}
-            >
+            <button onClick={() => setCurrentPage(currentPage + 1)} className="m-2 btn btn-success" disabled={currentPage >= data?.length - pageSize}>
               Next
             </button>
           </>

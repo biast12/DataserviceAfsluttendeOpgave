@@ -11,7 +11,7 @@ import Energipriser from "./pages/Energipriser";
 import Nyheder from "./pages/Nyheder";
 import Vejret from "./pages/Vejret";
 import AboutUs from "./pages/ViborgHaveservice/AboutUs";
-import Services from "./pages/ViborgHaveservice/Services";
+import Reviews from "./pages/ViborgHaveservice/Reviews";
 import YoutubeDownloader from "./pages/YoutubeDownloader";
 
 // Admin Pages
@@ -20,6 +20,7 @@ import HomeAdmin from "./pages/admin/HomeAdmin";
 import CreateReview from "./pages/admin/CreateReview";
 import EditReview from "./pages/admin/EditReview";
 import DeleteReview from "./pages/admin/DeleteReview";
+import EditAboutUs from "./pages/admin/EditAboutUs";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,7 +35,7 @@ function App() {
         { path: "nyheder", element: <Nyheder /> },
         { path: "vejret", element: <Vejret /> },
         { path: "viborghaveservice/aboutus", element: <AboutUs /> },
-        { path: "viborghaveservice/services", element: <Services /> },
+        { path: "viborghaveservice/reviews", element: <Reviews /> },
         { path: "youtubedownloader", element: <YoutubeDownloader /> },
       ],
     },
@@ -47,6 +48,7 @@ function App() {
         { path: "admin/createreview", element: <CreateReview /> },
         { path: "admin/editreview", element: <EditReview /> },
         { path: "admin/deletereview", element: <DeleteReview /> },
+        { path: "admin/editaboutus", element: <EditAboutUs /> },
       ],
     },
     { path: "*", element: <ErrorPages statusCode={404} /> },

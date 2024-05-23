@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
 import Title from "../components/Title";
+import Head from "../components/Head";
 
 const Login = () => {
   const { signIn, user } = useContext(LoginContext);
@@ -19,26 +20,14 @@ const Login = () => {
   }
   return (
     <section>
+      <Head title="Login" description="Login page" />
       <Title titleText={"Login"} />
-      <form
-        onSubmit={handleLogin}
-        className="flex flex-col items-center justify-center"
-      >
+      <form onSubmit={handleLogin} className="flex flex-col items-center justify-center">
         <div className="m-4">
-          <input
-            type="text"
-            name="inpIdentity"
-            placeholder="Brugernavn eller email"
-            className="border input border-primary-500"
-          ></input>
+          <input type="text" name="inpIdentity" placeholder="Brugernavn eller email" className="border input border-primary-500"></input>
         </div>
         <div className="m-4">
-          <input
-            type="password"
-            name="inpPW"
-            placeholder="Password"
-            className="border input border-primary-500"
-          ></input>
+          <input type="password" name="inpPW" placeholder="Password" className="border input border-primary-500"></input>
         </div>
         <div className="m-4">
           <button type="submit" className="btn btn-success">

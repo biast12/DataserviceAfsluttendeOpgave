@@ -36,9 +36,7 @@ const LoginContextProvider = (probs) => {
     <>
       {error && <Error statusCode={error} />}
       {isLoading && <Loader />}
-      <LoginContext.Provider value={{ signIn, signOut, user, token }}>
-        {probs.children}
-      </LoginContext.Provider>
+      <LoginContext.Provider value={{ signIn, signOut, user, token }}>{probs.children}</LoginContext.Provider>
     </>
   );
 };

@@ -3,17 +3,13 @@ import Error from "../ErrorPages";
 import Loader from "../../components/Loader";
 import useRequestData from "../../hooks/useRequestData";
 import Title from "../../components/Title";
+import Head from "../../components/Head";
 import ReviewSelectID from "../../components/ReviewSelectID";
 import CreateOrEditReviewCard from "./CreateOrEditReviewCard";
 
 const EditReview = () => {
   const { makeRequest, isLoading, data, error } = useRequestData();
-  const {
-    makeRequest: makeRequestEdit,
-    isLoading: isLoadingEdit,
-    data: dataEdit,
-    error: errorEdit,
-  } = useRequestData();
+  const { makeRequest: makeRequestEdit, isLoading: isLoadingEdit, data: dataEdit, error: errorEdit } = useRequestData();
 
   const [selectedReview, setSelectedReview] = useState();
 
@@ -35,16 +31,12 @@ const EditReview = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    makeRequestEdit(
-      "http://localhost:8081/reviews/admin/" + selectedReview._id,
-      "PUT",
-      null,
-      e.target
-    );
+    makeRequestEdit("http://localhost:8081/reviews/admin/" + selectedReview._id, "PUT", null, e.target);
   };
 
   return (
     <div className="p-6">
+      <Head title="Edit Review" description="This page is for editing reviews" />
       <Title titleText={"Edit Review"} />
       {isLoading || isLoadingEdit ? (
         <Loader />
@@ -59,10 +51,7 @@ const EditReview = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <p>Select an ID:</p>
                   <ReviewSelectID reviews={data} onSelect={handleSelect} />
-                  <CreateOrEditReviewCard
-                    selectedReview={selectedReview}
-                    buttonText="Edit Review"
-                  />
+                  <CreateOrEditReviewCard selectedReview={selectedReview} buttonText="Edit Review" />
                 </form>
               </div>
             </div>

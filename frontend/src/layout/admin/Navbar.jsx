@@ -13,13 +13,27 @@ const NavbarAdmin = () => {
             <NavLink to="/admin">ADMIN Home</NavLink>
           </li>
           <li>
-            <NavLink to="/admin/createreview">Create Review</NavLink>
+            <details
+              onClick={(e) => {
+                e.target.parentElement.parentElement.parentElement.removeAttribute("open");
+              }}
+            >
+              <summary>Reviews</summary>
+              <ul className="mt-2 bg-gray-900 border text-white border-white rounded shadow dropdown-menu z-50">
+                <li>
+                  <NavLink to="/admin/createreview">Create Review</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/admin/editreview">Edit Review</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/admin/deletereview">Delete Review</NavLink>
+                </li>
+              </ul>
+            </details>
           </li>
           <li>
-            <NavLink to="/admin/editreview">Edit Review</NavLink>
-          </li>
-          <li>
-            <NavLink to="/admin/deletereview">Delete Review</NavLink>
+            <NavLink to="/admin/editaboutus">Edit About Us</NavLink>
           </li>
           <li>
             <LogoutButton />

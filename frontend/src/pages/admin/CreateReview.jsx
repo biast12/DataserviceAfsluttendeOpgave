@@ -1,8 +1,8 @@
-import react from "react";
 import Error from "../ErrorPages";
 import Loader from "../../components/Loader";
 import useRequestData from "../../hooks/useRequestData";
 import Title from "../../components/Title";
+import Head from "../../components/Head";
 import CreateOrEditReviewCard from "./CreateOrEditReviewCard";
 
 const CreateReview = () => {
@@ -16,6 +16,7 @@ const CreateReview = () => {
 
   return (
     <div className="p-6">
+      <Head title="Create Review" description="This page is for creating reviews" />
       <Title titleText={"Create Review"} />
       {isLoading ? (
         <Loader />

@@ -3,6 +3,7 @@ import Error from "../ErrorPages";
 import Loader from "../../components/Loader";
 import useRequestData from "../../hooks/useRequestData";
 import Title from "../../components/Title";
+import Head from "../../components/Head";
 import DeleteReviewCard from "./DeleteReviewCard";
 import ReviewSelectID from "../../components/ReviewSelectID";
 
@@ -35,6 +36,7 @@ const DeleteReview = () => {
 
   return (
     <div className="p-6">
+      <Head title="Delete Review" description="This page is for deleting reviews" />
       <Title titleText={"Delete Review"} />
       {isLoading || isLoadingDelete ? (
         <Loader />
