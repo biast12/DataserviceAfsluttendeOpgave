@@ -1,0 +1,27 @@
+// Ignore all of files
+*.bat
+*.cmd
+*.sh
+*.py
+*.pdf
+*.docx
+*.xlsx
+*.zip
+*.rar
+*.7z
+*.pdf
+
+// Ignore files
+package*.json
+
+// Ignore directories
+*/node_modules/*
+*-boilerplate/
+
+// Include directories
+!*/node_modules/bootstrap
+!*/node_modules/bootstrap-icons
+!*/node_modules/jquery
+
+// Include files
+!generate_index.*
