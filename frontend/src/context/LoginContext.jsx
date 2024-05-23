@@ -12,9 +12,9 @@ const LoginContextProvider = (probs) => {
   const [token, setToken] = useState();
 
   useEffect(() => {
-    if (data && data.token) {
-      setUser(data.record.username);
-      setToken(data.token);
+    if (user && token) {
+      //setUser(data.record.username);
+      //setToken(data.token);
     } else {
       signOut();
     }
@@ -24,7 +24,9 @@ const LoginContextProvider = (probs) => {
     const fd = new FormData();
     fd.append("identity", identity);
     fd.append("password", password);
-    makeRequest("http://localhost:8082/api/collections/users/auth-with-password", "POST", null, fd);
+    setUser(identity);
+    setToken(password);
+    //makeRequest("http://localhost:8082/api/collections/users/auth-with-password", "POST", null, fd);
   };
   const signOut = () => {
     setUser();

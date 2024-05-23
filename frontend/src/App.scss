@@ -29,3 +29,12 @@ ul ol {
 p {
   @apply block mx-0 my-[1em];
 }
+
+
+.bg-image {
+  background-image: url("http://localhost:8081/public/images/Billedmateriale/udtalelser-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 60vh;
+}

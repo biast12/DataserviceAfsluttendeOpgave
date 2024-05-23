@@ -8,7 +8,12 @@ import CreateOrEditReviewCard from "./CreateOrEditReviewCard";
 
 const EditReview = () => {
   const { makeRequest, isLoading, data, error } = useRequestData();
-  const { makeRequest: makeRequestEdit, isLoading: isLoadingEdit, data: dataEdit, error: errorEdit } = useRequestData();
+  const {
+    makeRequest: makeRequestEdit,
+    isLoading: isLoadingEdit,
+    data: dataEdit,
+    error: errorEdit,
+  } = useRequestData();
 
   const [selectedReview, setSelectedReview] = useState();
 
@@ -30,11 +35,12 @@ const EditReview = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const updatedReview = {
-      ...selectedReview,
-    };
-
-    makeRequestEdit("http://localhost:8081/reviews/admin/" + updatedReview._id, "PUT", e.target);
+    makeRequestEdit(
+      "http://localhost:8081/reviews/admin/" + selectedReview._id,
+      "PUT",
+      null,
+      e.target
+    );
   };
 
   return (
@@ -53,7 +59,10 @@ const EditReview = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <p>Select an ID:</p>
                   <ReviewSelectID reviews={data} onSelect={handleSelect} />
-                  <CreateOrEditReviewCard selectedReview={selectedReview} buttonText="Edit Review" />
+                  <CreateOrEditReviewCard
+                    selectedReview={selectedReview}
+                    buttonText="Edit Review"
+                  />
                 </form>
               </div>
             </div>

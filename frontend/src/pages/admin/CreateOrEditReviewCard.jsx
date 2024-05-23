@@ -17,10 +17,10 @@ const CreateOrEditReviewCard = ({ selectedReview, buttonText }) => {
   return (
     <>
       <label className="block text-sm font-medium text-gray-300">
-        <input required className="block w-full px-3 py-2 mt-1 bg-gray-900 border border-gray-300 rounded-md" value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" name="author"></input>
+        <input required className="block w-full px-3 py-2 mt-1 bg-gray-900 border border-gray-300 rounded-md" defaultValue={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" name="author"></input>
       </label>
       <label className="block text-sm font-medium text-gray-300">
-        <input required className="block w-full px-3 py-2 mt-1 bg-gray-900 border border-gray-300 rounded-md" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" name="content"></input>
+        <input required className="block w-full px-3 py-2 mt-1 bg-gray-900 border border-gray-300 rounded-md" defaultValue={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" name="content"></input>
       </label>
       <button type="submit" className="w-full px-3 py-2 mt-4 text-white bg-blue-600 rounded-md cursor-pointer hover:bg-blue-500">
         {buttonText}

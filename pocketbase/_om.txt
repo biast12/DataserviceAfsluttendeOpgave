@@ -1,8 +1,0 @@
-Start pocketbase:
-    pocketbase.exe serve
-
-Start med eget valg af port
-    pocketbase.exe serve --http=localhost:8081
-
-GIT Bash terminal:
-    ./pocketbase serve

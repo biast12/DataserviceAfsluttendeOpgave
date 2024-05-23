@@ -12,6 +12,7 @@ import Nyheder from "./pages/Nyheder";
 import Vejret from "./pages/Vejret";
 import AboutUs from "./pages/ViborgHaveservice/AboutUs";
 import Services from "./pages/ViborgHaveservice/Services";
+import YoutubeDownloader from "./pages/YoutubeDownloader";
 
 // Admin Pages
 import AdminLayout from "./layout/admin";
@@ -34,6 +35,7 @@ function App() {
         { path: "vejret", element: <Vejret /> },
         { path: "viborghaveservice/aboutus", element: <AboutUs /> },
         { path: "viborghaveservice/services", element: <Services /> },
+        { path: "youtubedownloader", element: <YoutubeDownloader /> },
       ],
     },
     {

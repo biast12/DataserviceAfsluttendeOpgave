@@ -11,7 +11,7 @@ const Nyheder = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
 
-  const [searchKey, setSearchKey] = useState("ai");
+  const [searchKey, setSearchKey] = useState(null);
 
   const languages = [
     { code: "ar", name: "Arabic" },
@@ -38,11 +38,15 @@ const Nyheder = () => {
   const [sorting, setsorting] = useState("publishedAt");
 
   useEffect(() => {
-    handleSearch();
+    if (searchKey) {
+      handleSearch();
+    }
   }, [language, sorting, currentPage, pageSize]);
 
   const handleSearch = () => {
-    let url = `https://newsapi.org/v2/everything?language=${language}&q=${searchKey}&sortBy=${sorting}&apiKey=${import.meta.env.VITE_APP_NEWSAPIKEY}&page=${currentPage}&pageSize=${pageSize}`;
+    let url = `https://newsapi.org/v2/everything?language=${language}&q=${searchKey}&sortBy=${sorting}&apiKey=${
+      import.meta.env.VITE_APP_NEWSAPIKEY
+    }&page=${currentPage}&pageSize=${pageSize}`;
 
     makeRequest(url);
   };
@@ -66,7 +70,7 @@ const Nyheder = () => {
             setSearchKey(e.target.value);
           }}
         />
-        <button onClick={() => handleSearch()}>SØG</button>
+        <button disabled={!searchKey} onClick={() => handleSearch()}>SØG</button>
       </div>
 
       <div>
@@ -89,6 +93,7 @@ const Nyheder = () => {
           onChange={(e) => {
             setsorting(e.target.value);
           }}
+          required
           defaultValue={sorting}
           className="max-w-xs select select-bordered"
         >
@@ -118,12 +123,18 @@ const Nyheder = () => {
       <div>
         {data && (
           <>
-            <button onClick={() => setCurrentPage(currentPage - 1)} className="m-2 selected-none btn btn-error"
-            disabled={currentPage <= 1}>
+            <button
+              onClick={() => setCurrentPage(currentPage - 1)}
+              className="m-2 selected-none btn btn-error"
+              disabled={currentPage <= 1}
+            >
               Previous
             </button>
-            <button onClick={() => setCurrentPage(currentPage + 1)} className="m-2 btn btn-success"
-            disabled={currentPage >= data?.length - pageSize}>
+            <button
+              onClick={() => setCurrentPage(currentPage + 1)}
+              className="m-2 btn btn-success"
+              disabled={currentPage >= data?.length - pageSize}
+            >
               Next
             </button>
           </>

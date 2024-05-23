@@ -26,6 +26,9 @@ const Navbar = () => {
           <li>
             <NavLink to="energipriser">Energipriser</NavLink>
           </li>
+          <li>
+            <NavLink to="youtubedownloader">Youtube Downloader</NavLink>
+          </li>
           {!user ? (
             <li>
               <NavLink to="login">Login</NavLink>
