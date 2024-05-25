@@ -13,7 +13,7 @@ const formatDate = (dateString) => {
 const EnergipriserTable = ({ data }) => {
   const NO_DATA_COLUMNS = 5;
 
-  const downloadJSON = (data, filename) => {
+  const downloadJSON = (data) => {
     const today = new Date().toISOString().split("T")[0];
     const jsonStr = JSON.stringify(data);
     let element = document.createElement("a");
@@ -31,7 +31,7 @@ const EnergipriserTable = ({ data }) => {
         <>
           {data.total > 0 && (
             <button onClick={() => downloadJSON(data)} className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 hover:cursor-pointer">
-              Download JSON
+              Download Data
             </button>
           )}
 

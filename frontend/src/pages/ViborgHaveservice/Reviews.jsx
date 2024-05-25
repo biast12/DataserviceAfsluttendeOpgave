@@ -30,7 +30,7 @@ const Services = () => {
         {error && <Error statusCode={error} />}
         {isLoading && <Loader />}
         <div className="flex flex-col items-center relative w-full overflow-hidden mt-14">
-          <h2 className="text-4xl text-white mt-12">Kundeudtalelser</h2>
+          <h2 className="mt-8 text-4xl text-white">Kundeudtalelser</h2>
           <div className="w-16 h-1 mt-3 bg-white/70 rounded mb-14"></div>
           <div className="relative w-full mb-36 text-white">
             {data &&

@@ -22,7 +22,7 @@ const AboutUs = () => {
     } while (index1 === index2);
   }
 
-  const indexes = dataGallery && [index1, index2];
+  const indexes = [index1, index2];
 
   return (
     <div className="flex flex-col items-center">
